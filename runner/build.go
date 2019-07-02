@@ -10,7 +10,7 @@ import (
 func build() (string, bool) {
 	buildLog("go generate...")
 
-	exec.Command("go", "generate", root()).Run()
+	exec.Command("sh", "prebuild.sh").Run()
 
 	buildLog("Building...")
 	cmd := exec.Command("go", "build", "-o", buildPath(), root())
