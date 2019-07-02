@@ -8,8 +8,11 @@ import (
 )
 
 func build() (string, bool) {
-	buildLog("Building...")
+	buildLog("go generate...")
 
+	cmd := exec.Command("go", "generate", root())
+
+	buildLog("Building...")
 	cmd := exec.Command("go", "build", "-o", buildPath(), root())
 
 	stderr, err := cmd.StderrPipe()
