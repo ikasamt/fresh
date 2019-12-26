@@ -47,7 +47,9 @@ func isWatchedFile(path string) bool {
 	}
 
 	for _, reg := range strings.Split(settings["ignored_files"], ",") {
+		watcherLog(settings["ignored_files"])
 		if regexp.MustCompile(reg).Match([]byte(path)) {
+			watcherLog("ignore file %s", path)
 			return false
 		}
 	}
