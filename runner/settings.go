@@ -26,6 +26,7 @@ var settings = map[string]string{
 	"valid_ext":         ".go, .tpl, .tmpl, .html",
 	"no_rebuild_ext":    ".tpl, .tmpl, .html",
 	"ignored":           "assets, tmp",
+	"ignored_files":     "a_main*,zzz-*,auto*",
 	"build_delay":       "600",
 	"colors":            "1",
 	"log_color_main":    "cyan",

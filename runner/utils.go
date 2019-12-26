@@ -3,6 +3,7 @@ package runner
 import (
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -43,6 +44,12 @@ func isWatchedFile(path string) bool {
 
 	if strings.HasPrefix(absolutePath, absoluteTmpPath) {
 		return false
+	}
+
+	for _, reg := range strings.Split(settings["ignored_files"], ",") {
+		if regexp.MustCompile(reg).Match([]byte(path)) {
+			return false
+		}
 	}
 
 	ext := filepath.Ext(path)
